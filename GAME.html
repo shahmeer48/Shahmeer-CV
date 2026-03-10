@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFS Drift Web - 350Z</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #145014; /* Grass Green */
+            font-family: 'Verdana', sans-serif;
+        }
+        canvas {
+            display: block;
+        }
+        #ui {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 300px;
+            height: 100px;
+            background: rgba(10, 10, 10, 0.85);
+            border-radius: 15px;
+            color: white;
+            padding: 15px;
+            box-sizing: border-box;
+            pointer-events: none;
+            border: 2px solid #333;
+        }
+        .nitro-bar-bg {
+            width: 160px;
+            height: 16px;
+            background: #282828;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        #nitro-fill {
+            height: 100%;
+            background: #00ffff; /* Nitro Cyan */
+            width: 100%;
+        }
+        #speed { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<a href="index.html" style="
+position:fixed;
+top:20px;
+left:20px;
+background:#6c63ff;
+padding:10px 18px;
+border-radius:25px;
+color:white;
+text-decoration:none;
+font-family:Poppins;
+">
+⬅ Back to CV
+</a>
+
+    <div id="ui">
+        <div id="speed">0 KM/H</div>
+        <div>
+            <span style="color: #00ffff; font-weight: bold;">NITRO</span>
+            <div class="nitro-bar-bg"><div id="nitro-fill"></div></div>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const speedEl = document.getElementById('speed');
+const nitroFillEl = document.getElementById('nitro-fill');
+
+// --- Configuration ---
+let WIDTH, HEIGHT;
+function resize() {
+    WIDTH = window.innerWidth;
+    HEIGHT = window.innerHeight;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+}
+window.addEventListener('resize', resize);
+resize();
+
+const TRACK_RADIUS = 1800;
+const TRACK_WIDTH = 600;
+const FPS = 60;
+
+// Colors
+const COLOR_ROAD = "#2d2d32";
+const COLOR_GRASS = "#145014";
+const COLOR_CURB_RED = "#c81e1e";
+const COLOR_CURB_WHITE = "#e6e6e6";
+
+// Input handling
+const keys = {};
+window.addEventListener('keydown', e => keys[e.code] = true);
+window.addEventListener('keyup', e => keys[e.code] = false);
+
+class Particle {
+    constructor(x, y) {
+        this.x = x; this.y = y;
+        this.vx = (Math.random() - 0.5) * 4;
+        this.vy = (Math.random() - 0.5) * 4;
+        this.size = Math.random() * 8 + 8;
+        this.alpha = 0.8;
+    }
+    update() {
+        this.x += this.vx; this.y += this.vy;
+        this.size += 0.4; this.alpha -= 0.02;
+    }
+}
+
+class Skid {
+    constructor(x, y, angle) {
+        this.x = x; this.y = y; this.angle = angle;
+        this.life = 1.0;
+    }
+}
+
+class Car {
+    constructor() {
+        this.x = TRACK_RADIUS;
+        this.y = 0;
+        this.vx = 0; this.vy = 0;
+        this.angle = -Math.PI / 2;
+        this.speed = 0;
+        this.maxSpeed = 35;
+        this.accel = 0.6;
+        this.friction = 0.98;
+        this.nitro = 100;
+        this.drifting = false;
+    }
+
+    update() {
+        let steer = this.speed < 10 ? 0.06 : 0.09;
+        if (keys['ArrowLeft']) this.angle -= steer;
+        if (keys['ArrowRight']) this.angle += steer;
+
+        if (keys['ArrowUp']) {
+            if (this.speed < this.maxSpeed) this.speed += this.accel;
+            if (keys['ShiftLeft'] && this.nitro > 0) {
+                this.speed += 0.8;
+                this.nitro -= 1.5;
+            }
+        } else {
+            this.speed *= this.friction;
+        }
+
+        let targetVX = Math.cos(this.angle) * this.speed;
+        let targetVY = Math.sin(this.angle) * this.speed;
+
+        let grip = (keys['Space'] && this.speed > 8) ? 0.70 : 0.92;
+        this.drifting = (keys['Space'] && this.speed > 8);
+
+        this.vx = this.vx * grip + targetVX * (1 - grip);
+        this.vy = this.vy * grip + targetVY * (1 - grip);
+        this.x += this.vx;
+        this.y += this.vy;
+        this.speed = Math.sqrt(this.vx**2 + this.vy**2);
+
+        // Road Limits
+        let dist = Math.sqrt(this.x**2 + this.y**2);
+        let minR = TRACK_RADIUS - TRACK_WIDTH / 2;
+        let maxR = TRACK_RADIUS + TRACK_WIDTH / 2;
+
+        if (dist < minR || dist > maxR) {
+            let angle = Math.atan2(this.y, this.x);
+            let targetR = dist < minR ? minR : maxR;
+            this.x = Math.cos(angle) * targetR;
+            this.y = Math.sin(angle) * targetR;
+            this.speed *= 0.8; // Penalty
+        }
+
+        if (this.nitro < 100) this.nitro += 0.2;
+    }
+
+    draw(ctx, camX, camY) {
+        ctx.save();
+        ctx.translate(this.x - camX + WIDTH/2, this.y - camY + HEIGHT/2);
+        ctx.rotate(this.angle);
+        
+        // Car Body (350Z Shape)
+        ctx.fillStyle = "#d21e1e";
+        ctx.beginPath();
+        ctx.roundRect(-35, -15, 70, 30, 8);
+        ctx.fill();
+        
+        // Windshield
+        ctx.fillStyle = "#141414";
+        ctx.beginPath();
+        ctx.roundRect(-10, -12, 28, 24, 5);
+        ctx.fill();
+
+        // Headlights
+        ctx.fillStyle = "#ffffb4";
+        ctx.fillRect(25, -12, 10, 6);
+        ctx.fillRect(25, 6, 10, 6);
+        
+        ctx.restore();
+    }
+}
+
+const car = new Car();
+let camX = 0, camY = 0;
+const skids = [];
+const particles = [];
+
+function gameLoop() {
+    // Logic
+    car.update();
+    camX += (car.x - camX) * 0.08;
+    camY += (car.y - camY) * 0.08;
+
+    if (car.drifting) {
+        skids.push(new Skid(car.x, car.y, car.angle));
+        if (skids.length > 500) skids.shift();
+        for(let i=0; i<3; i++) particles.push(new Particle(car.x, car.y));
+    }
+
+    // Drawing
+    ctx.fillStyle = COLOR_GRASS;
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+    const cx = WIDTH/2 - camX;
+    const cy = HEIGHT/2 - camY;
+
+    // Track
+    ctx.beginPath();
+    ctx.arc(cx, cy, TRACK_RADIUS + TRACK_WIDTH/2, 0, Math.PI*2);
+    ctx.fillStyle = COLOR_ROAD;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, TRACK_RADIUS - TRACK_WIDTH/2, 0, Math.PI*2);
+    ctx.fillStyle = COLOR_GRASS;
+    ctx.fill();
+
+    // Curbs
+    ctx.strokeStyle = COLOR_CURB_RED;
+    ctx.lineWidth = 14;
+    ctx.beginPath(); ctx.arc(cx, cy, TRACK_RADIUS + TRACK_WIDTH/2 + 8, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, TRACK_RADIUS - TRACK_WIDTH/2 - 8, 0, Math.PI*2); ctx.stroke();
+
+    // Center Line
+    ctx.setLineDash([20, 20]);
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.arc(cx, cy, TRACK_RADIUS, 0, Math.PI*2); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Skids
+    skids.forEach((s, index) => {
+        ctx.save();
+        ctx.globalAlpha = s.life * 0.5;
+        ctx.translate(s.x - camX + WIDTH/2, s.y - camY + HEIGHT/2);
+        ctx.rotate(s.angle);
+        ctx.fillStyle = "black";
+        ctx.fillRect(-11, -12, 22, 5);
+        ctx.fillRect(-11, 7, 22, 5);
+        ctx.restore();
+        s.life -= 0.002;
+        if (s.life <= 0) skids.splice(index, 1);
+    });
+
+    // Particles
+    particles.forEach((p, index) => {
+        p.update();
+        ctx.beginPath();
+        ctx.globalAlpha = p.alpha;
+        ctx.arc(p.x - camX + WIDTH/2, p.y - camY + HEIGHT/2, p.size, 0, Math.PI*2);
+        ctx.fillStyle = "#dcdcdc";
+        ctx.fill();
+        if (p.alpha <= 0) particles.splice(index, 1);
+    });
+    ctx.globalAlpha = 1;
+
+    car.draw(ctx, camX, camY);
+
+    // Update UI
+    speedEl.innerText = Math.round(car.speed * 12) + " KM/H";
+    nitroFillEl.style.width = car.nitro + "%";
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+</body>
+</html>
