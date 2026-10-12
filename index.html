@@ -13,10 +13,10 @@
 :root{
   --primary: #00f5ff;
   --secondary: #6c63ff;
-  --accent: #ffd166;
+  --accent: #38bdf8;
   --bg-dark: #0a0e17;
-  --card-bg: rgba(255, 255, 255, 0.04);
-  --border-glow: rgba(0, 245, 255, 0.18);
+  --card-bg: rgba(255, 255, 255, 0.035);
+  --border-glow: rgba(0, 245, 255, 0.15);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
 }
@@ -30,7 +30,7 @@
 
 body{
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at 15% 15%, #131b2e 0%, #0a0e17 60%, #06090e 100%);
+  background: radial-gradient(circle at 20% 15%, #131b2e 0%, #0a0e17 65%, #05070b 100%);
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
@@ -54,7 +54,7 @@ body{
 
 .navbar h1{
   color: var(--primary);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -69,9 +69,8 @@ body{
   color: var(--text-muted);
   text-decoration: none;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   transition: 0.3s;
-  position: relative;
 }
 
 .navbar ul li a:hover,
@@ -79,24 +78,24 @@ body{
   color: var(--primary);
 }
 
-/* MAIN CONTAINER CARD */
+/* MAIN CONTAINER */
 .container{
   max-width: 1120px;
   margin: 110px auto 40px auto;
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 330px 1fr;
   background: var(--card-bg);
   backdrop-filter: blur(20px);
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--border-glow);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 245, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 245, 255, 0.06);
 }
 
 /* SIDEBAR */
 .sidebar{
-  background: rgba(8, 12, 20, 0.75);
-  padding: 40px 28px;
+  background: rgba(8, 12, 20, 0.8);
+  padding: 40px 25px;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -111,21 +110,21 @@ body{
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--primary);
-  box-shadow: 0 0 25px rgba(0, 245, 255, 0.45);
+  box-shadow: 0 0 25px rgba(0, 245, 255, 0.35);
   transition: transform 0.4s ease;
 }
 
 .profile-pic:hover{
-  transform: scale(1.05) rotate(2deg);
+  transform: scale(1.04);
 }
 
 .sidebar h2{
   color: var(--primary);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin: 30px 0 14px 0;
+  margin: 28px 0 14px 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -152,44 +151,38 @@ body{
   color: var(--primary);
 }
 
-.badge{
-  display: inline-block;
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(108, 99, 255, 0.2);
-  color: #c7c4ff;
-  border: 1px solid rgba(108, 99, 255, 0.4);
-  margin: 3px 2px;
-}
-
-/* SKILLS */
-.skill{
-  margin-bottom: 14px;
-}
-
-.skill-info{
+/* PROFESSIONAL SKILL PILLS (NO PERCENTAGES) */
+.skills-cloud{
   display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  font-weight: 500;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill{
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
   color: #e2e8f0;
-  margin-bottom: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.progress{
-  height: 7px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  overflow: hidden;
+.skill-pill:hover{
+  background: rgba(0, 245, 255, 0.1);
+  border-color: rgba(0, 245, 255, 0.4);
+  color: var(--primary);
+  transform: translateY(-2px);
 }
 
-.fill{
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  border-radius: 20px;
-  transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+.dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
 }
 
 /* MAIN CONTENT */
@@ -211,7 +204,7 @@ body{
   font-size: 15px;
   font-weight: 500;
   color: var(--accent);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   min-height: 24px;
   margin: 6px 0 18px 0;
   display: flex;
@@ -222,7 +215,7 @@ body{
   display: inline-block;
   width: 2px;
   background: var(--accent);
-  margin-left: 5px;
+  margin-left: 4px;
   animation: blink 0.8s infinite;
 }
 
@@ -232,7 +225,7 @@ body{
 }
 
 .summary-text{
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--text-muted);
   line-height: 1.7;
   border-left: 3px solid var(--primary);
@@ -249,11 +242,10 @@ body{
 }
 
 .section-head{
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
   margin-bottom: 16px;
-  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -263,24 +255,23 @@ body{
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), transparent);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent);
 }
 
 .card{
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   padding: 18px 20px;
-  border-radius: 14px;
+  border-radius: 12px;
   margin-bottom: 14px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  transition: 0.3s ease;
 }
 
 .card:hover{
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(0, 245, 255, 0.35);
-  box-shadow: 0 10px 25px rgba(0, 245, 255, 0.12);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(0, 245, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 245, 255, 0.08);
 }
 
 .card-top{
@@ -302,9 +293,9 @@ body{
   font-size: 11px;
   padding: 3px 10px;
   border-radius: 12px;
-  background: rgba(0, 245, 255, 0.1);
+  background: rgba(0, 245, 255, 0.08);
   color: var(--primary);
-  border: 1px solid rgba(0, 245, 255, 0.25);
+  border: 1px solid rgba(0, 245, 255, 0.2);
   white-space: nowrap;
 }
 
@@ -330,7 +321,7 @@ body{
 
 .projects h2{
   text-align: center;
-  font-size: 26px;
+  font-size: 24px;
   margin-bottom: 25px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
@@ -348,22 +339,22 @@ body{
   background: var(--card-bg);
   backdrop-filter: blur(15px);
   padding: 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: 0.35s;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .project-card:hover{
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--primary);
-  box-shadow: 0 15px 35px rgba(0, 245, 255, 0.18);
+  box-shadow: 0 15px 30px rgba(0, 245, 255, 0.14);
 }
 
 .project-card .title{
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   color: #fff;
   margin-bottom: 8px;
@@ -378,22 +369,20 @@ body{
 
 .project-btn{
   align-self: flex-start;
-  padding: 8px 20px;
+  padding: 8px 18px;
   background: linear-gradient(90deg, var(--secondary), #4f46e5);
   border-radius: 20px;
   text-decoration: none;
   color: #fff;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
 }
 
 .project-btn:hover{
   background: linear-gradient(90deg, var(--primary), #0284c7);
   color: #000;
   font-weight: 600;
-  box-shadow: 0 4px 20px rgba(0, 245, 255, 0.4);
 }
 
 /* RESPONSIVE */
@@ -443,35 +432,179 @@ body{
     <div class="contact-item">📍 <span>G-8/4 Liaquat Square Malir, Karachi</span></div>
 
     <h2>Technical Skills</h2>
-    <div class="skill">
-      <div class="skill-info"><span>Oracle ERP</span><span>60%</span></div>
-      <div class="progress"><div class="fill" data-width="60%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-info"><span>HTML5</span><span>60%</span></div>
-      <div class="progress"><div class="fill" data-width="60%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-info"><span>CSS3</span><span>60%</span></div>
-      <div class="progress"><div class="fill" data-width="60%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-info"><span>MS Office</span><span>60%</span></div>
-      <div class="progress"><div class="fill" data-width="60%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-info"><span>Python</span><span>30%</span></div>
-      <div class="progress"><div class="fill" data-width="30%"></div></div>
+    <div class="skills-cloud">
+      <span class="skill-pill"><span class="dot"></span>Oracle ERP</span>
+      <span class="skill-pill"><span class="dot"></span>Oracle APEX</span>
+      <span class="skill-pill"><span class="dot"></span>HTML5</span>
+      <span class="skill-pill"><span class="dot"></span>CSS3</span>
+      <span class="skill-pill"><span class="dot"></span>MS Office</span>
+      <span class="skill-pill"><span class="dot"></span>Python</span>
+      <span class="skill-pill"><span class="dot"></span>SQL Database</span>
+      <span class="skill-pill"><span class="dot"></span>Networking</span>
     </div>
 
-    <h2>Competencies</h2>
-    <div>
-      <span class="badge">Oracle APEX</span>
-      <span class="badge">Troubleshooting</span>
-      <span class="badge">ERP Support</span>
-      <span class="badge">Networking</span>
-      <span class="badge">Team Work</span>
-      <span class="badge">Quick Learner</span>
+    <h2>Professional Strengths</h2>
+    <div class="skills-cloud" style="margin-top: 5px;">
+      <span class="skill-pill">ERP Support</span>
+      <span class="skill-pill">Troubleshooting</span>
+      <span class="skill-pill">User Assistance</span>
+      <span class="skill-pill">Team Collaboration</span>
+      <span class="skill-pill">Quick Learner</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CV AREA -->
+  <main class="main">
+    <div class="name-header">
+      <h1>Shahmeer Shahid</h1>
+      <div class="typing-container">
+        <span id="typing"></span><span class="cursor">&nbsp;</span>
+      </div>
+    </div>
+
+    <p class="summary-text">
+      Dedicated IT Professional and Support Specialist with expertise in Oracle ERP systems and technical operations[span_1](start_span)[span_1](end_span). Possesses a strong foundation in software engineering and web technologies, currently focused on leveraging Oracle APEX to build efficient internal tools and solutions[span_2](start_span)[span_2](end_span).
+    </p>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="section">
+      <h3 class="section-head">Professional Experience</h3>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Oracle ERP Support</div>
+          <span class="duration-badge">Oct 2025 – Present</span>
+        </div>
+        <div class="sub">Artistic Milliners</div>
+        <p>Providing Oracle ERP technical support and troubleshooting end-user issues[span_3](start_span)[span_3](end_span). Assisting in IT operations and exploring Oracle APEX development[span_4](start_span)[span_4](end_span).</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">IT Intern</div>
+          <span class="duration-badge">3 Months</span>
+        </div>
+        <div class="sub">TAJ Group</div>
+        <p>Supported the IT team in daily tasks and issue resolution[span_5](start_span)[span_5](end_span). Gained hands-on experience in system and software maintenance[span_6](start_span)[span_6](end_span).</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">IT Support</div>
+          <span class="duration-badge">1 Year</span>
+        </div>
+        <div class="sub">Al Haider Communication</div>
+        <p>Provided technical support for hardware, software, and network setups[span_7](start_span)[span_7](end_span). Troubleshot and resolved technical issues effectively[span_8](start_span)[span_8](end_span).</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Social Media Marketing</div>
+          <span class="duration-badge">1 Year</span>
+        </div>
+        <div class="sub">JAU Crypto</div>
+        <p>Managed social media platforms and grew brand presence[span_9](start_span)[span_9](end_span). Created engaging content and campaigns to boost visibility[span_10](start_span)[span_10](end_span).</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="section">
+      <h3 class="section-head">Education</h3>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Higher Diploma in Software Engineering (Full Stack)</div>
+          <span class="duration-badge">2021 – 2024</span>
+        </div>
+        <div class="sub">Aptech Metro, Star Gate Campus - Karachi</div>
+        <p>Comprehensive curriculum covering database architecture, web standards, programming concepts, and IT operations[span_11](start_span)[span_11](end_span).</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Intermediate in Commerce</div>
+          <span class="duration-badge">2020 – 2021</span>
+        </div>
+        <div class="sub">Karachi Board</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Matriculation in Science</div>
+          <span class="duration-badge">2018 – 2019</span>
+        </div>
+        <div class="sub">Karachi Board</div>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<!-- PROJECTS SECTION -->
+<section class="projects" id="projects">
+  <h2>Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div>
+        <div class="title">Responsive Portfolio Website</div>
+        <p>Interactive personal showcase built with semantic HTML5, responsive CSS grid/flexbox layouts, and dynamic scripting.</p>
+      </div>
+      <a href="portfolio-project.html" target="_blank" class="project-btn">View Project ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <div class="title">Python Console Game</div>
+        <p>Terminal-based logic implementation demonstrating core algorithmic workflows, condition handling, and state control in Python.</p>
+      </div>
+      <a href="GAME.html" target="_blank" class="project-btn">Play Game ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTS -->
+<script>
+  const words = [
+    "Oracle ERP & IT Specialist",
+    "Oracle APEX Developer",
+    "IT Operations & Support",
+    "Full Stack Software Engineer"
+  ];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const targetElement = document.getElementById("typing");
+
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      targetElement.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      targetElement.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let speed = isDeleting ? 35 : 75;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      speed = 1800;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      speed = 400;
+    }
+
+    setTimeout(typeEffect, speed);
+  }
+
+  window.addEventListener("load", typeEffect);
+</script>
+
+</body>
+</html>
+arner</span>
     </div>
   </aside>
 
