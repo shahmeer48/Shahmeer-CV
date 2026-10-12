@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shahmeer Shahid | Oracle ERP & IT Specialist</title>
-  <meta name="description" content="Official portfolio and executive CV of Shahmeer Shahid - Oracle ERP & IT Operations Specialist." />
+  <meta name="description" content="Official portfolio and executive CV of Shahmeer Shahid." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
@@ -48,7 +48,6 @@
       background-attachment: fixed;
     }
 
-    /* AMBIENT BACKGROUND GLOW */
     .ambient-sphere {
       position: fixed;
       border-radius: 50%;
@@ -64,7 +63,6 @@
       background: var(--secondary-glow);
       top: -120px;
       right: -80px;
-      animation: drift 16s ease-in-out infinite alternate;
     }
 
     .sphere-2 {
@@ -73,17 +71,6 @@
       background: var(--primary-glow);
       bottom: -100px;
       left: -60px;
-      animation: drift2 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes drift {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-30px, 40px) scale(1.08); }
-    }
-
-    @keyframes drift2 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, -30px) scale(1.1); }
     }
 
     /* NAVIGATION */
@@ -93,7 +80,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: min(1140px, calc(100% - 32px));
-      background: rgba(9, 14, 26, 0.82);
+      background: rgba(9, 14, 26, 0.85);
       border: 1px solid var(--border);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -132,13 +119,12 @@
       color: #fff;
       font-size: 17px;
       font-weight: 700;
-      letter-spacing: 0.3px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
     }
 
     .nav-links a {
@@ -146,15 +132,13 @@
       text-decoration: none;
       font-size: 13.5px;
       font-weight: 500;
-      padding: 7px 14px;
+      padding: 7px 12px;
       border-radius: 10px;
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
+    .nav-links a:hover {
       color: var(--primary);
-      background: rgba(0, 240, 255, 0.06);
     }
 
     .nav-cta {
@@ -166,15 +150,14 @@
     .nav-cta:hover {
       border-color: var(--primary) !important;
       color: var(--primary) !important;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
     }
 
-    /* LAYOUT CONTAINER */
+    /* CONTAINER */
     .container {
       position: relative;
       z-index: 1;
       max-width: 1140px;
-      margin: 105px auto 50px;
+      margin: 105px auto 40px;
       padding: 0 16px;
     }
 
@@ -197,8 +180,6 @@
     /* SIDEBAR */
     .sidebar {
       padding: 32px 24px;
-      position: sticky;
-      top: 95px;
     }
 
     .profile-wrap {
@@ -213,11 +194,6 @@
       object-fit: cover;
       border: 2px solid var(--primary);
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .profile-pic:hover {
-      transform: scale(1.04);
     }
 
     .sidebar-label {
@@ -227,9 +203,6 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin: 24px 0 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .contact-list {
@@ -271,10 +244,15 @@
       background: rgba(255, 255, 255, 0.035);
       border: 1px solid rgba(255, 255, 255, 0.07);
       color: #e2e8f0;
-      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      transition: 0.25s;
+    }
+
+    .tag-item:hover {
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
     .tag-dot {
@@ -284,24 +262,16 @@
       background: var(--primary);
     }
 
-    .tag-item:hover {
-      border-color: var(--primary);
-      background: rgba(0, 240, 255, 0.08);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    /* MAIN CONTENT */
+    /* MAIN PANEL */
     .main {
       padding: 38px 36px;
     }
 
     .name-block h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
       font-weight: 700;
       line-height: 1.15;
-      letter-spacing: -0.03em;
       background: linear-gradient(100deg, #ffffff 40%, var(--primary) 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -316,7 +286,6 @@
       font-size: 15px;
       font-weight: 600;
       color: var(--accent);
-      letter-spacing: 0.4px;
     }
 
     .cursor {
@@ -341,23 +310,23 @@
       border-left: 3px solid var(--primary);
       padding: 14px 18px;
       border-radius: 0 12px 12px 0;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
+    /* BUTTONS ROW */
     .action-group {
       display: flex;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 34px;
     }
 
-    .btn-main,
-    .btn-ghost {
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 20px;
+      padding: 10px 18px;
       border-radius: 10px;
       font-size: 13px;
       font-weight: 600;
@@ -365,39 +334,49 @@
       transition: all 0.25s ease;
     }
 
-    .btn-main {
+    .btn-download {
+      background: linear-gradient(90deg, var(--primary), #0284c7);
+      color: #030712;
+      box-shadow: 0 4px 18px rgba(0, 240, 255, 0.3);
+    }
+
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 240, 255, 0.45);
+    }
+
+    .btn-projects {
       background: linear-gradient(90deg, var(--secondary), #4f46e5);
       color: #fff;
-      box-shadow: 0 8px 20px rgba(112, 93, 242, 0.3);
+      box-shadow: 0 4px 16px rgba(112, 93, 242, 0.3);
     }
 
-    .btn-main:hover {
+    .btn-projects:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(112, 93, 242, 0.45);
+      box-shadow: 0 6px 22px rgba(112, 93, 242, 0.45);
     }
 
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.03);
+    .btn-email {
+      background: rgba(255, 255, 255, 0.04);
       color: #fff;
       border: 1px solid var(--border);
     }
 
-    .btn-ghost:hover {
+    .btn-email:hover {
       border-color: var(--primary);
       color: var(--primary);
       transform: translateY(-2px);
     }
 
-    /* SECTIONS & CARDS */
+    /* SECTION HEADINGS */
     .section-title-wrap {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       font-family: 'Space Grotesk', sans-serif;
       font-size: 18px;
       font-weight: 700;
-      letter-spacing: 0.3px;
       color: #ffffff;
     }
 
@@ -414,11 +393,287 @@
       border-radius: 16px;
       padding: 18px 20px;
       margin-bottom: 14px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s ease;
     }
 
     .card:hover {
       background: var(--bg-card-hover);
+      border-color: var(--border-focus);
+      transform: translateY(-2px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .badge-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.22);
+      color: var(--primary);
+    }
+
+    .card-org {
+      color: var(--secondary);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      color: var(--text-sub);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* PROJECTS */
+    .projects-container {
+      margin-top: 36px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .project-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .project-card p {
+      color: var(--text-sub);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .project-btn {
+      align-self: flex-start;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--secondary), #4f46e5);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .project-btn:hover {
+      background: linear-gradient(90deg, var(--primary), #0284c7);
+      color: #030712;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      padding: 40px 0 20px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        width: calc(100% - 24px);
+        padding: 10px 18px;
+      }
+      .main {
+        padding: 26px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-sphere sphere-1"></div>
+  <div class="ambient-sphere sphere-2"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" aria-label="Main Navigation">
+    <a href="#cv" class="brand">
+      <div class="brand-mark">S</div>
+      <div class="brand-name">Shahmeer Shahid</div>
+    </a>
+
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="Shahmeer%20Shahid%20Cv.pdf" target="_blank" class="nav-cta">Download CV</a>
+    </div>
+  </nav>
+
+  <!-- CONTAINER -->
+  <div class="container" id="cv">
+    <div class="layout">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar panel" aria-label="Sidebar Profile">
+        <div class="profile-wrap">
+          <img src="profile.jpg" alt="Shahmeer Shahid" class="profile-pic" />
+        </div>
+
+        <div class="sidebar-label">Contact Details</div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span>📞</span>
+            <span>03323870161 / 03700119085[span_3](start_span)[span_3](end_span)</span>
+          </div>
+          <div class="contact-item">
+            <span>📧</span>
+            <a href="mailto:shahidshahmeer48@gmail.com">shahidshahmeer48@gmail.com[span_4](start_span)[span_4](end_span)</a>
+          </div>
+          <div class="contact-item">
+            <span>📍</span>
+            <span>G-8/4 Liaquat Square Malir, Karachi[span_5](start_span)[span_5](end_span)</span>
+          </div>
+        </div>
+
+        <div class="sidebar-label">Technical Skills</div>
+        <div class="tags-cloud">
+          <span class="tag-item"><span class="tag-dot"></span>Oracle ERP[span_6](start_span)[span_6](end_span)</span>
+          <span class="tag-item"><span class="tag-dot"></span>Oracle APEX[span_7](start_span)[span_7](end_span)</span>
+          <span class="tag-item"><span class="tag-dot"></span>HTML5 / CSS3[span_8](start_span)[span_8](end_span)</span>
+          <span class="tag-item"><span class="tag-dot"></span>Python[span_9](start_span)[span_9](end_span)</span>
+          <span class="tag-item"><span class="tag-dot"></span>SQL Database</span>
+          <span class="tag-item"><span class="tag-dot"></span>MS Office[span_10](start_span)[span_10](end_span)</span>
+          <span class="tag-item"><span class="tag-dot"></span>Networking</span>
+        </div>
+
+        <div class="sidebar-label">Core Competencies</div>
+        <div class="tags-cloud">
+          <span class="tag-item">ERP Troubleshooting[span_11](start_span)[span_11](end_span)</span>
+          <span class="tag-item">IT Operations[span_12](start_span)[span_12](end_span)</span>
+          <span class="tag-item">User Support[span_13](start_span)[span_13](end_span)</span>
+          <span class="tag-item">Team Collaboration</span>
+          <span class="tag-item">Quick Learner</span>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main panel">
+        <div class="name-block">
+          <h1>Shahmeer Shahid[span_14](start_span)[span_14](end_span)</h1>
+          <div class="typing-container">
+            <span id="typing-text"></span>
+            <span class="cursor" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          Dedicated IT Professional and Support Specialist with expertise in Oracle ERP systems and technical operations[span_15](start_span)[span_15](end_span). Possesses a strong foundation in software engineering and web technologies, currently focused on leveraging Oracle APEX to build efficient internal tools and solutions[span_16](start_span)[span_16](end_span).
+        </div>
+
+        <!-- 3 MAIN ACTION BUTTONS -->
+        <div class="action-group">
+          <a href="Shahmeer%20Shahid%20Cv.pdf" target="_blank" download class="btn btn-download">📄 Download CV</a>
+          <a href="#projects" class="btn btn-projects">View Projects ↗</a>
+          <a href="mailto:shahidshahmeer48@gmail.com" class="btn btn-email">✉ Send Email[span_17](start_span)[span_17](end_span)</a>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" style="margin-bottom: 32px;">
+          <div class="section-title-wrap">Professional Experience[span_18](start_span)[span_18](end_span)</div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">Oracle ERP Support[span_19](start_span)[span_19](end_span)</div>
+              <span class="badge-pill">Oct 2025 – Present[span_20](start_span)[span_20](end_span)</span>
+            </div>
+            <div class="card-org">Artistic Milliners[span_21](start_span)[span_21](end_span)</div>
+            <p class="card-desc">Providing Oracle ERP technical support and troubleshooting end-user issues[span_22](start_span)[span_22](end_span). Assisting in IT operations and exploring Oracle APEX development[span_23](start_span)[span_23](end_span).</p>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">IT Intern[span_24](start_span)[span_24](end_span)</div>
+              <span class="badge-pill">3 Months[span_25](start_span)[span_25](end_span)</span>
+            </div>
+            <div class="card-org">TAJ[span_26](start_span)[span_26](end_span)</div>
+            <p class="card-desc">Supported the IT team in daily tasks and issue resolution[span_27](start_span)[span_27](end_span). Gained hands-on experience in system and software maintenance[span_28](start_span)[span_28](end_span).</p>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">IT Support[span_29](start_span)[span_29](end_span)</div>
+              <span class="badge-pill">1 Year[span_30](start_span)[span_30](end_span)</span>
+            </div>
+            <div class="card-org">Al Haider Communication[span_31](start_span)[span_31](end_span)</div>
+            <p class="card-desc">Provided technical support for hardware, software, and network setups[span_32](start_span)[span_32](end_span). Troubleshot and resolved technical issues effectively[span_33](start_span)[span_33](end_span).</p>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">Social Media Marketing[span_34](start_span)[span_34](end_span)</div>
+              <span class="badge-pill">1 Year[span_35](start_span)[span_35](end_span)</span>
+            </div>
+            <div class="card-org">JAU Crypto[span_36](start_span)[span_36](end_span)</div>
+            <p class="card-desc">Managed social media platforms and grew brand presence[span_37](start_span)[span_37](end_span). Created engaging content and campaigns to boost visibility[span_38](start_span)[span_38](end_span).</p>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+          <div class="section-title-wrap">Education[span_39](start_span)[span_39](end_span)</div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">Higher Diploma in Software Engineering (Full Stack Development)[span_40](start_span)[span_40](end_span)</div>
+              <span class="badge-pill">2021 – 2024[span_41](start_span)[span_41](end_span)</span>
+            </div>
+            <div class="card-org">Aptech Metro, Star Gate Campus - Karachi[span_42](start_span)[span_42](end_span)</div>
+            <p class="card-desc">Comprehensive training in software development lifecycles, full-stack programming, relational databases, and IT systems[span_43](start_span)[span_43](end_span).</p>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">Intermediate in Commerce[span_44](start_span)[span_44](end_span)</div>
+              <span class="badge-pill">2020 – 2021[span_45](start_span)[span_45](end_span)</span>
+            </div>
+            <div class="card-org">Karachi[span_46](start_span)[span_46](end_span)</div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <div class="card-title">Matriculation in Science[span_47](start_span)[span_47](end_span)</div>
+              <span clhover);
       border-color: var(--border-focus);
       transform: translateY(-3px);
       box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
