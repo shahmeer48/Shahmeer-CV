@@ -1,431 +1,635 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shahmeer Shahid - CV</title>
+<title>Shahmeer Shahid - Oracle ERP & IT Specialist</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
---primary:#00f5ff;
---secondary:#6c63ff;
+  --primary: #00f5ff;
+  --secondary: #6c63ff;
+  --accent: #ffd166;
+  --bg-dark: #0a0e17;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --border-glow: rgba(0, 245, 255, 0.18);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
 }
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
-color:#fff;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at 15% 15%, #131b2e 0%, #0a0e17 60%, #06090e 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* NAVBAR */
-
 .navbar{
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 50px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(15px);
-position:fixed;
-top:0;
-z-index:100;
-box-shadow:0 0 15px rgba(0,255,255,0.2);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(16px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar h1{
-color:var(--primary);
-font-size:22px;
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .navbar ul{
-list-style:none;
-display:flex;
-gap:30px;
+  list-style: none;
+  display: flex;
+  gap: 28px;
 }
 
 .navbar ul li a{
-color:#fff;
-text-decoration:none;
-font-weight:500;
-transition:0.3s;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: 0.3s;
+  position: relative;
 }
 
-.navbar ul li a:hover{
-color:var(--secondary);
+.navbar ul li a:hover,
+.navbar ul li a.active{
+  color: var(--primary);
 }
 
-/* CV CARD */
-
+/* MAIN CONTAINER CARD */
 .container{
-max-width:1100px;
-margin:120px auto 50px auto;
-display:grid;
-grid-template-columns:1fr 2fr;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 0 40px rgba(0,255,255,0.2);
+  max-width: 1120px;
+  margin: 110px auto 40px auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 245, 255, 0.08);
 }
 
-/* Sidebar */
-
+/* SIDEBAR */
 .sidebar{
-background:rgba(0,0,0,0.6);
-padding:40px 30px;
-text-align:center;
+  background: rgba(8, 12, 20, 0.75);
+  padding: 40px 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profile-wrap{
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .profile-pic{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid #00f5ff;
-box-shadow:0 0 15px rgba(0,255,255,0.5);
-margin-bottom:20px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 25px rgba(0, 245, 255, 0.45);
+  transition: transform 0.4s ease;
+}
+
+.profile-pic:hover{
+  transform: scale(1.05) rotate(2deg);
 }
 
 .sidebar h2{
-color:var(--primary);
-margin-bottom:15px;
-text-align:left;
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 30px 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .contact-item{
-font-size:13px;
-margin-bottom:10px;
-opacity:0.85;
-text-align:left;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
+.contact-item a{
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.contact-item a:hover{
+  color: var(--primary);
+}
+
+.badge{
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(108, 99, 255, 0.2);
+  color: #c7c4ff;
+  border: 1px solid rgba(108, 99, 255, 0.4);
+  margin: 3px 2px;
+}
+
+/* SKILLS */
 .skill{
-margin-bottom:15px;
-text-align:left;
+  margin-bottom: 14px;
+}
+
+.skill-info{
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin-bottom: 6px;
 }
 
 .progress{
-height:6px;
-background:rgba(255,255,255,0.1);
-border-radius:20px;
-margin-top:5px;
-overflow:hidden;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .fill{
-height:100%;
-width:0;
-background:linear-gradient(90deg,var(--primary),var(--secondary));
-transition:1.5s ease;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 20px;
+  transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Main */
-
+/* MAIN CONTENT */
 .main{
-padding:50px;
+  padding: 45px 42px;
 }
 
-.main h1{
-font-size:32px;
-background:linear-gradient(90deg,var(--primary),var(--secondary));
--webkit-background-clip:text;
-background-clip:text;
--webkit-text-fill-color:transparent;
+.name-header h1{
+  font-size: 34px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff, var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
 }
 
-.role{
-font-size:14px;
-letter-spacing:2px;
-margin-bottom:20px;
-height:20px;
+.typing-container{
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 1px;
+  min-height: 24px;
+  margin: 6px 0 18px 0;
+  display: flex;
+  align-items: center;
 }
 
+.cursor{
+  display: inline-block;
+  width: 2px;
+  background: var(--accent);
+  margin-left: 5px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink{
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.summary-text{
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  border-left: 3px solid var(--primary);
+  padding-left: 14px;
+  margin-bottom: 35px;
+  background: rgba(0, 245, 255, 0.02);
+  border-radius: 0 8px 8px 0;
+  padding-block: 8px;
+}
+
+/* SECTIONS */
 .section{
-margin-top:35px;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
+  margin-bottom: 32px;
 }
 
-.section.show{
-opacity:1;
-transform:translateY(0);
+.section-head{
+  font-size: 19px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-head::after{
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), transparent);
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-padding:15px;
-border-radius:10px;
-margin-bottom:15px;
-transition:0.4s;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px 20px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .card:hover{
-transform:translateY(-5px) scale(1.02);
-box-shadow:0 0 20px rgba(0,255,255,0.4);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(0, 245, 255, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 245, 255, 0.12);
 }
 
-.title{font-weight:600;}
-.sub{color:var(--primary);font-size:13px;}
-.duration{font-size:12px;opacity:0.6;}
+.card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
 
-/* Projects Section */
+.card .title{
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
 
+.card .duration-badge{
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(0, 245, 255, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  white-space: nowrap;
+}
+
+.card .sub{
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.card p{
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* PROJECTS SECTION */
 .projects{
-max-width:1100px;
-margin:50px auto;
-padding:20px;
+  max-width: 1120px;
+  margin: 0 auto 70px auto;
+  padding: 0 15px;
 }
 
 .projects h2{
-text-align:center;
-font-size:28px;
-margin-bottom:25px;
-background:linear-gradient(90deg,var(--primary),var(--secondary));
--webkit-background-clip:text;
-background-clip:text;
--webkit-text-fill-color:transparent;
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .project-card{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
-text-align:center;
-transition:0.3s;
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.35s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-card:hover{
-transform:scale(1.03);
-box-shadow:0 0 25px rgba(0,255,255,0.3);
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: 0 15px 35px rgba(0, 245, 255, 0.18);
+}
+
+.project-card .title{
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.project-card p{
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
 .project-btn{
-display:inline-block;
-margin-top:10px;
-padding:8px 18px;
-background:#6c63ff;
-border-radius:20px;
-text-decoration:none;
-color:white;
-font-size:13px;
-transition:0.3s;
+  align-self: flex-start;
+  padding: 8px 20px;
+  background: linear-gradient(90deg, var(--secondary), #4f46e5);
+  border-radius: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
 }
 
 .project-btn:hover{
-background:#00f5ff;
+  background: linear-gradient(90deg, var(--primary), #0284c7);
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0, 245, 255, 0.4);
 }
 
-/* Responsive */
-
-@media(max-width:768px){
-
-.container{
-grid-template-columns:1fr;
-padding:0 10px;
+/* RESPONSIVE */
+@media(max-width: 860px){
+  .container{
+    grid-template-columns: 1fr;
+    margin-top: 90px;
+  }
+  .sidebar{
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 20px;
+  }
+  .main{
+    padding: 30px 20px;
+  }
+  .navbar{
+    padding: 15px 20px;
+  }
 }
-
-.navbar{
-flex-direction:column;
-gap:15px;
-padding:15px 20px;
-}
-
-.navbar ul{
-flex-direction:column;
-gap:10px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-<h1>Shahmeer Shahid</h1>
-<ul>
-<li><a href="#cv">CV</a></li>
-<li><a href="#projects">Projects</a></li>
-</ul>
-</div>
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <h1>Shahmeer Shahid</h1>
+  <ul>
+    <li><a href="#cv" class="active">CV</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
 
+<!-- MAIN PROFILE CONTAINER -->
 <div class="container" id="cv">
 
-<div class="sidebar">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="profile-wrap">
+      <img src="profile.jpg" alt="Shahmeer Shahid" class="profile-pic">
+    </div>
 
-<img src="profile.jpg" class="profile-pic">
+    <h2>Contact Info</h2>
+    <div class="contact-item">📞 <span>03323870161 / 03700119085</span></div>
+    <div class="contact-item">📧 <a href="mailto:shahidshahmeer48@gmail.com">shahidshahmeer48@gmail.com</a></div>
+    <div class="contact-item">📍 <span>G-8/4 Liaquat Square Malir, Karachi</span></div>
 
-<h2>Contact</h2>
-<div class="contact-item">📞 03323870161</div>
-<div class="contact-item">📧 shahidshahmeer48@gmail.com</div>
-<div class="contact-item">📍 Karachi, Pakistan</div>
+    <h2>Technical Skills</h2>
+    <div class="skill">
+      <div class="skill-info"><span>Oracle ERP</span><span>60%</span></div>
+      <div class="progress"><div class="fill" data-width="60%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-info"><span>HTML5</span><span>60%</span></div>
+      <div class="progress"><div class="fill" data-width="60%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-info"><span>CSS3</span><span>60%</span></div>
+      <div class="progress"><div class="fill" data-width="60%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-info"><span>MS Office</span><span>60%</span></div>
+      <div class="progress"><div class="fill" data-width="60%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-info"><span>Python</span><span>30%</span></div>
+      <div class="progress"><div class="fill" data-width="30%"></div></div>
+    </div>
 
-<h2 style="margin-top:25px;">Technical Skills</h2>
+    <h2>Competencies</h2>
+    <div>
+      <span class="badge">Oracle APEX</span>
+      <span class="badge">Troubleshooting</span>
+      <span class="badge">ERP Support</span>
+      <span class="badge">Networking</span>
+      <span class="badge">Team Work</span>
+      <span class="badge">Quick Learner</span>
+    </div>
+  </aside>
 
-<div class="skill">HTML5 (40%)<div class="progress"><div class="fill" data-width="40%"></div></div></div>
-<div class="skill">CSS3 (40%)<div class="progress"><div class="fill" data-width="40%"></div></div></div>
-<div class="skill">Python (30%)<div class="progress"><div class="fill" data-width="30%"></div></div></div>
-<div class="skill">SQL / Oracle (35%)<div class="progress"><div class="fill" data-width="35%"></div></div></div>
-<div class="skill">Networking (30%)<div class="progress"><div class="fill" data-width="30%"></div></div></div>
-<div class="skill">MS Office (40%)<div class="progress"><div class="fill" data-width="40%"></div></div></div>
+  <!-- MAIN CV AREA -->
+  <main class="main">
+    <div class="name-header">
+      <h1>Shahmeer Shahid</h1>
+      <div class="typing-container">
+        <span id="typing"></span><span class="cursor">&nbsp;</span>
+      </div>
+    </div>
 
-<h2 style="margin-top:25px;">Soft Skills</h2>
+    <p class="summary-text">
+      Dedicated IT Professional and Support Specialist with expertise in Oracle ERP systems and technical operations. Possesses a strong foundation in software engineering and web technologies, currently focused on leveraging Oracle APEX to build efficient internal tools and solutions.
+    </p>
 
-<div class="contact-item">✔ Problem Solving</div>
-<div class="contact-item">✔ Communication</div>
-<div class="contact-item">✔ Team Work</div>
-<div class="contact-item">✔ Quick Learner</div>
+    <!-- EXPERIENCE SECTION -->
+    <section class="section">
+      <h3 class="section-head">Professional Experience</h3>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Oracle ERP Support</div>
+          <span class="duration-badge">Oct 2025 – Present</span>
+        </div>
+        <div class="sub">Artistic Milliners</div>
+        <p>Providing Oracle ERP technical support and troubleshooting end-user issues. Assisting in IT operations and exploring Oracle APEX development.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">IT Intern</div>
+          <span class="duration-badge">3 Months</span>
+        </div>
+        <div class="sub">TAJ Group</div>
+        <p>Supported the IT team in daily tasks and issue resolution. Gained hands-on experience in system and software maintenance.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">IT Support</div>
+          <span class="duration-badge">1 Year</span>
+        </div>
+        <div class="sub">Al Haider Communication</div>
+        <p>Provided technical support for hardware, software, and network setups. Troubleshot and resolved technical issues effectively.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Social Media Marketing</div>
+          <span class="duration-badge">1 Year</span>
+        </div>
+        <div class="sub">JAU Crypto</div>
+        <p>Managed social media platforms and grew brand presence. Created engaging content and campaigns to boost visibility.</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="section">
+      <h3 class="section-head">Education</h3>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Higher Diploma in Software Engineering (Full Stack)</div>
+          <span class="duration-badge">2021 – 2024</span>
+        </div>
+        <div class="sub">Aptech Metro, Star Gate Campus - Karachi</div>
+        <p>Core focus on software development lifecycles, database structures, web programming, and debugging.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Intermediate in Commerce</div>
+          <span class="duration-badge">2020 – 2021</span>
+        </div>
+        <div class="sub">Karachi Board</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="title">Matriculation in Science</div>
+          <span class="duration-badge">2018 – 2019</span>
+        </div>
+        <div class="sub">Karachi Board</div>
+      </div>
+    </section>
+  </main>
 
 </div>
 
-<div class="main">
+<!-- PROJECTS SECTION -->
+<section class="projects" id="projects">
+  <h2>Featured Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div>
+        <div class="title">Responsive Portfolio Website</div>
+        <p>Modern interactive personal showcase developed with clean HTML5, modern CSS3 layout styling, and JavaScript logic.</p>
+      </div>
+      <a href="portfolio-project.html" target="_blank" class="project-btn">View Project ↗</a>
+    </div>
 
-<h1>Shahmeer Shahid</h1>
+    <div class="project-card">
+      <div>
+        <div class="title">Python Console Game</div>
+        <p>Interactive game logic demonstrating core algorithmic foundations, condition controls, and loops built in Python.</p>
+      </div>
+      <a href="GAME.html" target="_blank" class="project-btn">Play Game ↗</a>
+    </div>
+  </div>
+</section>
 
-<div class="role" id="typing"></div>
-
-<p style="opacity:0.85;">
-Motivated Software Engineering graduate with 3 years of academic training from Aptech Metro.
-Hands-on exposure in Frontend Development, Database Management, Programming Fundamentals,
-Networking and IT Support.
-</p>
-
-<div class="section">
-
-<h3>Professional Experience</h3>
-
-<div class="card">
-<div class="title">Assistant – Oracle Support (IT Department)</div>
-<div class="sub">Artistic Millers Pvt Ltd</div>
-<div class="duration">6 Months</div>
-<p>Handled Oracle ERP user issues, database queries, troubleshooting and user support.</p>
-</div>
-
-<div class="card">
-<div class="title">IT Support Officer</div>
-<div class="sub">Al Haider Communication</div>
-<div class="duration">1 Year</div>
-<p>Installed Windows OS, configured LAN networks and solved hardware/software issues.</p>
-</div>
-
-<div class="card">
-<div class="title">Social Media Marketing Executive</div>
-<div class="sub">JAU Crypto</div>
-<div class="duration">2021 – 2024</div>
-<p>Managed digital campaigns and brand promotion strategies.</p>
-</div>
-
-<div class="card">
-<div class="title">IT Intern</div>
-<div class="sub">TAJ Group</div>
-<div class="duration">3 Months</div>
-<p>Supported IT team in maintenance and troubleshooting.</p>
-</div>
-
-</div>
-
-<div class="section">
-
-<h3>Education</h3>
-
-<div class="card">
-<div class="title">Higher Diploma in Software Engineering</div>
-<div class="sub">Aptech Metro – 2021-2024</div>
-<p>HTML, CSS, Python, SQL, Oracle, SDLC, Networking, Database Design, Debugging & Deployment.</p>
-</div>
-
-<div class="card">
-<div class="title">Intermediate in Commerce</div>
-<div class="sub">Karachi Board (2020 – 2021)</div>
-</div>
-
-<div class="card">
-<div class="title">Matriculation in Science</div>
-<div class="sub">Karachi Board (2018 – 2019)</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="projects" id="projects">
-
-<h2>Projects</h2>
-
-<div class="project-card">
-<div class="title">Responsive Portfolio Website</div>
-<p>Personal portfolio website built using HTML, CSS and JavaScript with modern responsive UI.</p>
-<a href="portfolio-project.html" target="_blank" class="project-btn">Open Project</a>
-</div>
-
-<div class="project-card">
-<div class="title">Python Console Game</div>
-<p>Simple Python game developed using Python programming logic.</p>
-<a href="GAME.html" target="_blank" class="project-btn">Open Game</a>
-</div>
-
-</div>
-
+<!-- SCRIPTS -->
 <script>
+  // Advanced Dynamic Typing Effect
+  const words = [
+    "Oracle ERP & IT Specialist",
+    "Oracle APEX Enthusiast",
+    "IT Support & Operations",
+    "Frontend Developer"
+  ];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const targetElement = document.getElementById("typing");
 
-const text="Frontend Developer | IT Support Specialist | Full Stack Learner";
-let i=0;
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      targetElement.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      targetElement.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
 
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,50);
-}
-}
+    let speed = isDeleting ? 40 : 80;
 
-typing();
+    if (!isDeleting && charIndex === currentWord.length) {
+      speed = 1800; // Pause when complete
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      speed = 400; // Pause before typing next word
+    }
 
-const sections=document.querySelectorAll(".section");
+    setTimeout(typeEffect, speed);
+  }
 
-window.addEventListener("scroll",()=>{
-
-sections.forEach(sec=>{
-
-if(sec.getBoundingClientRect().top<window.innerHeight-100){
-
-sec.classList.add("show");
-
-}
-
-});
-
-});
-
-window.addEventListener("load",()=>{
-
-document.querySelectorAll(".fill").forEach(fill=>{
-
-fill.style.width=fill.getAttribute("data-width");
-
-});
-
-});
-
+  // Animate skill bars smoothly once loaded
+  window.addEventListener("load", () => {
+    typeEffect();
+    document.querySelectorAll(".fill").forEach(fill => {
+      fill.style.width = fill.getAttribute("data-width");
+    });
+  });
 </script>
 
 </body>
 </html>
-```
